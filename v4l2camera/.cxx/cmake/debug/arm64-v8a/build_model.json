@@ -1,0 +1,69 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "E:\\workspace\\AnV4L2Camera",
+      "sdkFolder": "C:\\Users\\Admin\\sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\build\\intermediates",
+      "gradleModulePathName": ":v4l2camera",
+      "moduleRootFolder": "E:\\workspace\\AnV4L2Camera\\v4l2camera",
+      "makeFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "E:\\workspace\\AnV4L2Camera\\.cxx",
+      "cxxFolder": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx",
+      "ndkFolder": "C:\\Users\\Admin\\sdk\\ndk\\25.1.8937393",
+      "ndkVersion": "25.1.8937393",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [
+      ""
+    ],
+    "variantName": "debug",
+    "soFolder": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\build\\intermediates\\cmake\\debug\\lib",
+    "objFolder": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\build\\intermediates\\cmake\\debug\\obj",
+    "jsonFolder": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cmake\\debug",
+    "gradleBuildOutputFolder": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cxx\\debug",
+    "isDebuggableEnabled": true,
+    "validAbiList": [
+      "ARM64_V8A"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "ARM64_V8A",
+  "abiPlatformVersion": 23,
+  "cxxBuildFolder": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cmake\\debug\\arm64-v8a",
+  "jsonFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cmake\\debug\\arm64-v8a\\android_gradle_build.json",
+  "gradleBuildOutputFolder": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cxx\\debug\\arm64-v8a",
+  "objFolder": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\build\\intermediates\\cmake\\debug\\obj\\arm64-v8a",
+  "buildCommandFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cmake\\debug\\arm64-v8a\\build_command.txt",
+  "buildOutputFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cmake\\debug\\arm64-v8a\\build_output.txt",
+  "modelOutputFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cmake\\debug\\arm64-v8a\\build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cxx\\debug\\arm64-v8a\\CMakeLists.txt",
+    "toolchainWrapperFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cxx\\debug\\arm64-v8a\\android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cxx\\debug\\arm64-v8a\\build_generation_state.json",
+    "cacheKeyFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cxx\\debug\\arm64-v8a\\compiler_cache_key.json",
+    "compilerCacheUseFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cxx\\debug\\arm64-v8a\\compiler_cache_use.json",
+    "compilerCacheWriteFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cxx\\debug\\arm64-v8a\\compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cxx\\debug\\arm64-v8a\\compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cmake\\debug\\arm64-v8a\\json_generation_record.json",
+  "compileCommandsJsonFile": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cmake\\debug\\arm64-v8a\\compile_commands.json"
+}

@@ -1,21 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="horizontal"
+tools:context=".V4L2CameraActivity">
 
-<!--    <ExpandableListView-->
-<!--        android:id="@+id/dataFormat"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:divider="#ff0000"-->
-<!--        android:dividerHeight="2dp"-->
-<!--        android:groupIndicator="@null">-->
-<!--    </ExpandableListView>-->
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_weight="1"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <pri.tool.anv4l2camera.AutoFitSurfaceView
+            android:id="@+id/cameraSurface1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <pri.tool.anv4l2camera.AutoFitSurfaceView
+            android:id="@+id/cameraSurface2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+        <pri.tool.anv4l2camera.AutoFitSurfaceView
+            android:id="@+id/cameraSurface3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <pri.tool.anv4l2camera.AutoFitSurfaceView
-        android:id="@+id/cameraSurface"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-     />
+        <pri.tool.anv4l2camera.AutoFitSurfaceView
+            android:id="@+id/cameraSurface4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+        <pri.tool.anv4l2camera.AutoFitSurfaceView
+            android:id="@+id/cameraSurface5"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <pri.tool.anv4l2camera.AutoFitSurfaceView
+            android:id="@+id/cameraSurface6"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <pri.tool.anv4l2camera.AutoFitSurfaceView
+            android:id="@+id/cameraSurface7"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+        <pri.tool.anv4l2camera.AutoFitSurfaceView
+            android:id="@+id/cameraSurface8"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <pri.tool.anv4l2camera.AutoFitSurfaceView
+            android:id="@+id/cameraSurface9"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</LinearLayout>
+
 </LinearLayout>

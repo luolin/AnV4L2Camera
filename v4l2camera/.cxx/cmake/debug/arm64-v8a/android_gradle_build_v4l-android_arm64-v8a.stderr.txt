@@ -1,0 +1,1 @@
+ninja: error: 'E:/workspace/AnV4L2Camera/v4l2camera/src/main/jniLibs/arm64-v8a/libjpeg.so', needed by 'E:/workspace/AnV4L2Camera/v4l2camera/build/intermediates/cmake/debug/obj/arm64-v8a/libv4l-android.so', missing and no known rule to make it

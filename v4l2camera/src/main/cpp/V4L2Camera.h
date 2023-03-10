@@ -26,7 +26,7 @@
 #include "JavaCallHelper.h"
 
 //sync with com.iview.common.module.ImageUtils
-#define YV12 0
+#define NV12 0
 #define NV21 1
 #define YUYV 2
 #define MJPEG 3
@@ -57,6 +57,8 @@ typedef struct {
 #define ERROR_OPEN_FAIL  -5
 #define ERROR_PREVIEW_FAIL  -6
 
+#define BUFFER_COUNT 8
+#define PLANES_NUM 1
 
 
 class V4L2Camera {
@@ -79,7 +81,7 @@ public:
 	std::list<Parameter> getParameters();
 	int setPreviewSize(int width, int height, int pixformat);
 
-    int GrabRawFrame(void *raw_base);
+    int GrabRawFrame(unsigned char *raw_base);
     void Convert(void *raw_base,
 		 void *preview_base,
 		 unsigned int rawSize);
@@ -97,8 +99,10 @@ public:
 private:
     int fd;
     int start;
-    unsigned char *mem;
+    unsigned char *mem[BUFFER_COUNT];
+
     struct v4l2_buffer buf;
+	struct v4l2_plane planes[1];
 
     unsigned int width;
     unsigned int height;
@@ -109,7 +113,8 @@ private:
     ANativeWindow *window = 0;
     std::mutex windowLock;
 
-    pthread_t pid_start;
+    pthread_t pid_start[BUFFER_COUNT];
+	pthread_mutex_t mutex_t;
 
     JavaCallHelper* listener = 0;
 	std::mutex listenerLock;

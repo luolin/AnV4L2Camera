@@ -1,0 +1,8 @@
+Executable : C:\Users\Admin\sdk\cmake\3.6.4111459\bin\cmake.exe
+arguments : 
+--build
+E:\workspace\AnV4L2Camera\v4l2camera\.cxx\cmake\debug\arm64-v8a
+--target
+v4l-android
+jvmArgs : 
+

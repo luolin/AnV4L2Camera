@@ -1,26 +1,25 @@
 package pri.tool.v4l2camera;
 
 import android.content.Context;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 
-import androidx.annotation.RequiresApi;
-
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pri.tool.bean.Frame;
 import pri.tool.bean.FrameRate;
 import pri.tool.bean.Parameter;
 
-import static pri.tool.v4l2camera.ImageUtils.YUYV;
+import static pri.tool.v4l2camera.ImageUtils.NV12;
 
 
 public class V4L2Camera{
@@ -36,8 +35,8 @@ public class V4L2Camera{
     public final static int ERROR_OPEN_FAIL = -5;
     public final static int ERROR_PREVIEW_FAIL = -6;
 
-    IStateCallback stateCallback; //状态回调，如打开camera成功失败状态，其他异常
-    IDataCallback dataCallback;  //camera 数据回调
+    IStateCallback mIStateCallback;//状态回调，如打开camera成功失败状态，其他异常
+    IDataCallback mIDataCallback;//camera 数据回调
 
     Size mPreviewSize;
 
@@ -45,41 +44,43 @@ public class V4L2Camera{
         System.loadLibrary("v4l-android");
     }
 
-    public void init(IStateCallback callback, Context context) {
-        stateCallback = callback;
+    public void init(int cameraid, IStateCallback callback, Context context) {
+        mIStateCallback = callback;
         native_init();
     }
 
     /*
      *  释放SDK资源
      */
-    public void release() {
+    public void release(int cameraid) {
         native_release();
-        stateCallback = null;
+        mIStateCallback = null;
     }
 
-    public void open() {
-        int ret = native_open();
+    public void open(int cameraid) {
+        int ret = native_open(cameraid);
 
         if (ret == SUCCESS) {
-            stateCallback.onOpened();
+            if(mIStateCallback != null)
+                mIStateCallback.onOpened();
         } else {
-            stateCallback.onError(ERROR_OPEN_FAIL);
+            if(mIStateCallback != null)
+                mIStateCallback.onError(ERROR_OPEN_FAIL);
         }
     }
 
-    public void close() {
-        native_close();
+    public void close(int cameraid) {
+        native_close(cameraid);
     }
 
     /**
      * 设置预览 Surface。
      */
-    public void setSurface(SurfaceHolder holder) {
+    public void setSurface(int cameraid, SurfaceHolder holder) {
         if (holder != null) {
-            native_setSurface(holder.getSurface());
+            native_setSurface(cameraid, holder.getSurface());
         } else {
-            native_setSurface((Surface)null);
+            native_setSurface(cameraid, (Surface)null);
         }
 
     }
@@ -87,31 +88,30 @@ public class V4L2Camera{
     /**
      * 开始预览。
      */
-    public void startPreview(IDataCallback callback) {
-        dataCallback = callback;
-        native_startPreview();
-
+    public void startPreview(int cameraid, IDataCallback callback) {
+        mIDataCallback = callback;
+        native_startPreview(cameraid);
     }
 
     /**
      * 停止预览。
      */
-    public void stopPreview() {
-        native_stopPreview();
-        dataCallback = null;
+    public void stopPreview(int cameraid) {
+        native_stopPreview(cameraid);
+        mIDataCallback = null;
     }
 
-    public ArrayList<Parameter> getCameraParameters() {
-        return native_getParameters();
+    public ArrayList<Parameter> getCameraParameters(int cameraid) {
+        return native_getParameters(cameraid);
     }
 
-    public int setPreviewParameter(int width, int height, int pixFormat) {
-        return native_setPreviewSize(width, height, pixFormat);
+    public int setPreviewParameter(int cameraid, int width, int height, int pixFormat) {
+        return native_setPreviewSize(cameraid, width, height, pixFormat);
     }
 
-    public Size chooseOptimalSize(int desireWidth, int desireHeight) {
+    public Size chooseOptimalSize(int cameraid, int desireWidth, int desireHeight) {
 
-        ArrayList<Parameter> parameters = native_getParameters();
+        ArrayList<Parameter> parameters = native_getParameters(cameraid);
         for(Parameter parameter:parameters) {
             Log.e(TAG, "support format: " + parameter.pixFormat);
             for (Frame frame : parameter.frames) {
@@ -121,16 +121,26 @@ public class V4L2Camera{
                 }
             }
         }
-
-        List<Size> cameraSizes = getSupportedPreviewSizes(parameters, YUYV);
+/*
+        FrameRate fa = new FrameRate(1, 30);
+        ArrayList<FrameRate> fas = new ArrayList<>();
+        fas.add(fa);
+        Frame f = new Frame(1280, 720, fas);
+        ArrayList<Frame> fs = new ArrayList<>();
+        fs.add(f);
+        Parameter p = new Parameter(NV12, fs);
+        ArrayList<Parameter> parameters = new ArrayList<>();
+        parameters.add(p);
+*/
+        List<Size> cameraSizes = getSupportedPreviewSizes(parameters, NV12);
         Size[] sizes = new Size[cameraSizes.size()];
         int i = 0;
         for (Size size : cameraSizes) {
             sizes[i++] = new Size(size.getWidth(), size.getHeight());
         }
         mPreviewSize = chooseOptimalSize(sizes, desireWidth, desireHeight);
-
-        native_setPreviewSize(mPreviewSize.getWidth(), mPreviewSize.getHeight(), YUYV);
+        Log.e(TAG, "setPreviewSize:" + mPreviewSize.getWidth() + ", denominator:" + mPreviewSize.getHeight());
+        native_setPreviewSize(cameraid, mPreviewSize.getWidth(), mPreviewSize.getHeight(), NV12);
 
         return mPreviewSize;
     }
@@ -216,21 +226,20 @@ public class V4L2Camera{
     }
 
     //Jni 层回调的函数
-    private void postDataFromNative(byte[] data, int width, int height, int pixformat) {
-        //Log.e(TAG, "postDataFromNative");
-        if (dataCallback != null) {
-            dataCallback.onDataCallback(data, pixformat, width, height);
+    private void postDataFromNative(int cameraid, byte[] data, int width, int height, int pixformat) {
+        if (mIDataCallback != null) {
+            mIDataCallback.onDataCallback(cameraid, data, pixformat, width, height);
         }
     }
 
     private native final void native_init();
     private native final void native_release();
-    private native final int native_open();
-    private native final void native_close();
-    private native final ArrayList<Parameter> native_getParameters();
-    private native final int native_setPreviewSize(int width, int height, int pixFormat);
-    private native final int native_setSurface(Object surface);
-    private native final int native_startPreview();
-    private native final int native_stopPreview();
+    private native final int native_open(int cameraid);
+    private native final void native_close(int cameraid);
+    private native final ArrayList<Parameter> native_getParameters(int cameraid);
+    private native final int native_setPreviewSize(int cameraid, int width, int height, int pixFormat);
+    private native final int native_setSurface(int cameraid, Object surface);
+    private native final int native_startPreview(int cameraid);
+    private native final int native_stopPreview(int cameraid);
 
 }

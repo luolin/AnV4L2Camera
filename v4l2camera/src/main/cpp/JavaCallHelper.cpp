@@ -12,19 +12,20 @@
 #define ALOGW(...)  __android_log_print(ANDROID_LOG_WARN, LOG_TAG, __VA_ARGS__)
 #define ALOGD(...)  __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 
-JavaCallHelper::JavaCallHelper(JavaVM *javaVM_, JNIEnv *env_, jobject instance_) {
-    ALOGE("enter : %s", __FUNCTION__);
+JavaCallHelper::JavaCallHelper(JavaVM *javaVM_, JNIEnv *env_, jobject instance_, int id) {
+    ALOGI("enter : %s", __FUNCTION__);
     this->javaVM = javaVM_;
     this->env = env_;
 //    this->instance = instance_;//不能直接赋值！
     //一旦涉及到 jobject 跨方法、跨线程，需要创建全局引用
     this->instance = env->NewGlobalRef(instance_);
     jclass clazz = env->GetObjectClass(instance);
+    this->cameraid = id;
 //    cd 进入 class所在的目录 执行： javap -s 全限定名,查看输出的 descriptor
 //    xx\app\build\intermediates\classes\debug>javap -s com.netease.jnitest.Helper
-    jDataCallback = env->GetMethodID(clazz, "postDataFromNative", "([BIII)V");
+    jDataCallback = env->GetMethodID(clazz, "postDataFromNative", "(I[BIII)V");
 
-    ALOGE("leave: %s", __FUNCTION__);
+    ALOGI("leave: %s  %d", __FUNCTION__, this->cameraid);
 
 }
 
@@ -41,7 +42,7 @@ void JavaCallHelper::onDataCallback(unsigned char* buf, int len, int width, int 
     int status = javaVM->GetEnv((void**)&env, JNI_VERSION_1_4);
     if (status < 0) {
         javaVM->AttachCurrentThread(&env, NULL);
-        ALOGE("AttachCurrentThread");
+        ALOGI("AttachCurrentThread");
     }
 
     jbyteArray array = env->NewByteArray(len);
@@ -62,8 +63,8 @@ void JavaCallHelper::onDataCallback(unsigned char* buf, int len, int width, int 
 
     env->SetByteArrayRegion(array, 0, len, pByte);
 
-    ALOGE("CallVoidMethod");
-    env->CallVoidMethod(instance, jDataCallback, array, width, height, pixFormat);
+    ALOGI("CallVoidMethod cameraid: %d", this->cameraid);
+    env->CallVoidMethod(instance, jDataCallback, this->cameraid, array, width, height, pixFormat);
 
     env->DeleteLocalRef(array);
     delete  pByte;

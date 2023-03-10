@@ -1,0 +1,352 @@
+
+{
+	"buildFiles" : [ "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/CMakeLists.txt" ],
+	"cleanCommands" : 
+	[
+		"C:\\Users\\Admin\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cmake\\debug\\arm64-v8a --target clean"
+	],
+	"cppFileExtensions" : [ "cc", "cpp" ],
+	"libraries" : 
+	{
+		"libjpeg-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "libjpeg",
+			"buildType" : "debug",
+			"output" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a/libjpeg.so",
+			"toolchain" : "2127548153"
+		},
+		"v4l-android-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "v4l-android",
+			"buildCommand" : "C:\\Users\\Admin\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\cmake\\debug\\arm64-v8a --target v4l-android",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/JavaCallHelper.cpp",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/V4L2Camera.cpp",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/native_camera.cpp",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/compare.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/compare_common.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/compare_gcc.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/compare_mmi.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/compare_msa.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/compare_neon.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/compare_neon64.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/compare_win.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/convert.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/convert_argb.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/convert_from.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/convert_from_argb.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/convert_jpeg.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/convert_to_argb.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/convert_to_i420.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/cpu_id.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/mjpeg_decoder.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/mjpeg_validate.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/planar_functions.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/rotate.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/rotate_any.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/rotate_argb.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/rotate_common.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/rotate_gcc.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/rotate_mmi.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/rotate_msa.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/rotate_neon.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/rotate_neon64.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/rotate_win.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/row_any.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/row_common.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/row_gcc.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/row_mmi.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/row_msa.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/row_neon.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/row_neon64.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/row_win.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale_any.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale_argb.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale_common.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale_gcc.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale_mmi.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale_msa.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale_neon.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale_neon64.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale_uv.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/scale_win.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android23 --sysroot=C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -DHAVE_JPEG -DSAVE_JPEG -Dv4l_android_EXPORTS -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\include -IE:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\libjpeg  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -LE:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/../jniLibs/arm64-v8a -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "E:/workspace/AnV4L2Camera/v4l2camera/src/main/cpp/libyuv/source/video_common.cc",
+					"workingDirectory" : "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a"
+				}
+			],
+			"output" : "E:/workspace/AnV4L2Camera/v4l2camera/build/intermediates/cmake/debug/obj/arm64-v8a/libv4l-android.so",
+			"toolchain" : "2127548153"
+		}
+	},
+	"toolchains" : 
+	{
+		"2127548153" : 
+		{
+			"cCompilerExecutable" : "C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+			"cppCompilerExecutable" : "C:/Users/Admin/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+		}
+	}
+}

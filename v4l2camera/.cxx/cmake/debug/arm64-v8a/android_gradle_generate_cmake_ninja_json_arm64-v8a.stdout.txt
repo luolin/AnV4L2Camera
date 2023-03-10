@@ -1,0 +1,2 @@
+-- Configuring incomplete, errors occurred!
+See also "E:/workspace/AnV4L2Camera/v4l2camera/.cxx/cmake/debug/arm64-v8a/CMakeFiles/CMakeOutput.log".

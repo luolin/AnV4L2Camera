@@ -7,7 +7,7 @@ public class Frame {
     public int height;
     public ArrayList<FrameRate> frameRate;
 
-    Frame(int width, int height, ArrayList<FrameRate> frameRate) {
+    public Frame(int width, int height, ArrayList<FrameRate> frameRate) {
         this.width = width;
         this.height = height;
         this.frameRate = frameRate;

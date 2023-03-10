@@ -1,0 +1,43 @@
+{
+  "buildFiles": [
+    "E:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\Admin\\sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\Debug\\a2z6r5v2\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\Admin\\sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "E:\\workspace\\AnV4L2Camera\\v4l2camera\\.cxx\\Debug\\a2z6r5v2\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "v4l-android::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "v4l-android",
+      "output": "E:\\workspace\\AnV4L2Camera\\v4l2camera\\build\\intermediates\\cxx\\Debug\\a2z6r5v2\\obj\\arm64-v8a\\libv4l-android.so",
+      "runtimeFiles": [
+        "E:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\jniLibs\\arm64-v8a\\libjpeg.so",
+        "E:\\workspace\\AnV4L2Camera\\v4l2camera\\src\\main\\jniLibs\\arm64-v8a\\libc++.so",
+        "C:\\Users\\Admin\\sdk\\ndk\\23.1.7779620\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\aarch64-linux-android\\23\\liblog.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "C:\\Users\\Admin\\sdk\\ndk\\23.1.7779620\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "C:\\Users\\Admin\\sdk\\ndk\\23.1.7779620\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp",
+    "cc"
+  ]
+}

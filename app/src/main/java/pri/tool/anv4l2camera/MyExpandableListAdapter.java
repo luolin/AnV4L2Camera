@@ -131,8 +131,6 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
             childHold = (ChildHold) convertView.getTag();
         }
 
-        Log.e(TAG, "getChildView");
-
         String childName = resolution[groupPosition][childPosition];
         childHold.tvChildName.setText(childName);
 

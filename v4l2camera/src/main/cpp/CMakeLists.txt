@@ -3,7 +3,7 @@
 
 # Sets the minimum version of CMake required to build the native library.
 
-cmake_minimum_required(VERSION 3.4.1)
+cmake_minimum_required(VERSION 3.22.1)
 
 include_directories(include libjpeg)
 add_definitions(-DHAVE_JPEG -DSAVE_JPEG)
@@ -16,10 +16,13 @@ file(GLOB src_files *.cpp  libyuv/source/*.cc)
 # 指定libjpeg动态库路径
 set(jpeglibs "${CMAKE_SOURCE_DIR}/../jniLibs")
 
-# 导入第三方库：libjpeg.so
+# 导入第三方库：libjpeg.so libc++.so
 add_library(libjpeg SHARED IMPORTED)
+add_library(libc++ SHARED IMPORTED)
 set_target_properties(libjpeg PROPERTIES
         IMPORTED_LOCATION "${jpeglibs}/${ANDROID_ABI}/libjpeg.so")
+set_target_properties(libc++ PROPERTIES
+        IMPORTED_LOCATION "${jpeglibs}/${ANDROID_ABI}/libc++.so")
 
 
 
@@ -59,7 +62,7 @@ target_link_libraries( # Specifies the target library.
         v4l-android
         android
         libjpeg
-
+        libc++
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})

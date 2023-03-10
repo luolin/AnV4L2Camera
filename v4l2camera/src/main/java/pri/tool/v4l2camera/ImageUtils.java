@@ -7,7 +7,7 @@ public class ImageUtils {
     private final static String TAG = "ImageUtils";
 
     // YUV420 arranged in “Y0-Y1-......””V0-V1....””U0-U1-.....” format
-    public final static int YV12 = 0;
+    public final static int NV12 = 0;
 
     //YUV420sp  arranged in "YYYY YYYY VU VU" format
     public final static int NV21 = 1;

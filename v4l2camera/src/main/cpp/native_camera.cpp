@@ -15,54 +15,59 @@
 #define ALOGW(...)  __android_log_print(ANDROID_LOG_WARN, LOG_TAG, __VA_ARGS__)
 #define ALOGD(...)  __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 
-#define VIDEO_FILE "/dev/video0"
+//#define VIDEO_FILE "/dev/video0"
+#define CAMERA_COUNT 8
+const char* VIDEO_FILE[] ={"/dev/video0", "/dev/video1", "/dev/video2", "/dev/video3", "/dev/video8", "/dev/video9", "/dev/video10", "/dev/video11"};
+#define IMAGEWIDTH      1280
+#define IMAGEHEIGHT     720
+#define PIX_FORMATE     V4L2_PIX_FMT_NV12
 
-#define IMAGEWIDTH      640
-#define IMAGEHEIGHT     480
-#define PIX_FORMATE     V4L2_PIX_FMT_YUYV
-
-V4L2Camera* v4l2Camera = 0;
+V4L2Camera* v4l2Camera[CAMERA_COUNT];
 JavaVM *javaVM = 0;
 
 static void com_iview_camera_native_init(JNIEnv *env,jobject thiz) {
-
-    v4l2Camera = new V4L2Camera();
-    //由v4l2负责释放
-    JavaCallHelper* javaCallHelper = new JavaCallHelper(javaVM, env, thiz);
-    v4l2Camera->setListener(javaCallHelper);
-}
-
-static void com_iview_camera_native_release(JNIEnv *env) {;
-
-    if (v4l2Camera != 0) {
-        v4l2Camera->setListener(0);
-        delete v4l2Camera;
-        v4l2Camera = 0;
+    for(int i=0; i<CAMERA_COUNT; i++) {
+        if(v4l2Camera[i] == 0) {
+            v4l2Camera[i] = new V4L2Camera();
+            //由v4l2负责释放
+            JavaCallHelper *javaCallHelper = new JavaCallHelper(javaVM, env, thiz, i);
+            v4l2Camera[i]->setListener(javaCallHelper);
+        }
     }
 }
 
-static jint com_iview_camera_native_open(JNIEnv *env, jobject thiz) {
+static void com_iview_camera_native_release(JNIEnv *env) {;
+    for(int i=0; i<CAMERA_COUNT; i++) {
+        if (v4l2Camera[i] != 0) {
+            v4l2Camera[i]->setListener(0);
+            delete v4l2Camera[i];
+            v4l2Camera[i] = 0;
+        }
+    }
+}
+
+static jint com_iview_camera_native_open(JNIEnv *env, jobject thiz, jint cameraid) {
 
     int ret = ERROR_OPEN_FAIL;
-    if (v4l2Camera != 0) {
-        ret = v4l2Camera->Open(VIDEO_FILE, IMAGEWIDTH, IMAGEHEIGHT, PIX_FORMATE);
+    if (v4l2Camera[cameraid] != 0) {
+        ret = v4l2Camera[cameraid]->Open(VIDEO_FILE[cameraid], IMAGEWIDTH, IMAGEHEIGHT, PIX_FORMATE);
     }
 
     return ret;
 }
 
-static void com_iview_camera_native_close(JNIEnv *env, jobject thiz) {
+static void com_iview_camera_native_close(JNIEnv *env, jobject thiz, jint cameraid) {
     if (v4l2Camera != 0) {
-        v4l2Camera->Close();
+        v4l2Camera[cameraid]->Close();
     }
 }
 
-static jobject com_iview_camera_native_getParameters(JNIEnv *env, jobject thiz) {
+static jobject com_iview_camera_native_getParameters(JNIEnv *env, jobject thiz, jint cameraid) {
 
-    if (v4l2Camera == 0) {
+    if (v4l2Camera[cameraid] == 0) {
         return 0;
     }
-    std::list<Parameter> parameters = v4l2Camera->getParameters();
+    std::list<Parameter> parameters = v4l2Camera[cameraid]->getParameters();
 
     jclass list_class = env->FindClass("java/util/ArrayList");
     if (list_class == NULL) {
@@ -112,6 +117,9 @@ static jobject com_iview_camera_native_getParameters(JNIEnv *env, jobject thiz) 
             case V4L2_PIX_FMT_H264:
                 format = H264;
                 break;
+            case V4L2_PIX_FMT_NV12:
+                format = NV12;
+                break;
             default:
                 format = parameter.pixFormat;
                 break;
@@ -123,13 +131,16 @@ static jobject com_iview_camera_native_getParameters(JNIEnv *env, jobject thiz) 
     return list_obj;
 }
 
-static jint com_iview_camera_native_setPreviewSize(JNIEnv *env, jobject thiz, jint width, jint height, jint pixformat) {
-    if (v4l2Camera == 0) {
+static jint com_iview_camera_native_setPreviewSize(JNIEnv *env, jobject thiz, jint cameraid, jint width, jint height, jint pixformat) {
+    if (v4l2Camera[cameraid] == 0) {
         return ERROR_CAPABILITY_UNSUPPORT;
     }
 
     int format;
     switch (pixformat) {
+        case NV12:
+            format = V4L2_PIX_FMT_NV12;
+            break;
         case YUYV:
             format = V4L2_PIX_FMT_YUYV;
             break;
@@ -145,41 +156,41 @@ static jint com_iview_camera_native_setPreviewSize(JNIEnv *env, jobject thiz, ji
         return ERROR_CAPABILITY_UNSUPPORT;
     }
 
-    return v4l2Camera->setPreviewSize(width, height, format);
+    return v4l2Camera[cameraid]->setPreviewSize(width, height, format);
 }
 
-static int com_iview_camera_native_setSurface(JNIEnv *env, jobject thiz, jobject surface) {
+static int com_iview_camera_native_setSurface(JNIEnv *env, jobject thiz, jint cameraid, jobject surface) {
     if (v4l2Camera == 0) {
         return ERROR_CAPABILITY_UNSUPPORT;
     }
 
     ANativeWindow *window = ANativeWindow_fromSurface(env, surface);
 
-    v4l2Camera->setSurface(window);
+    v4l2Camera[cameraid]->setSurface(window);
 
     return 0;
 }
 
-static int com_iview_camera_native_startPreview(JNIEnv *env, jobject thiz) {
+static int com_iview_camera_native_startPreview(JNIEnv *env, jobject thiz, jint cameraid) {
     if (v4l2Camera == 0) {
         return ERROR_CAPABILITY_UNSUPPORT;
     }
     int ret = 0;
-    ret = v4l2Camera->Init();
+    ret = v4l2Camera[cameraid]->Init();
     if (ret != 0 ) {
         ALOGE("startPreview init fail");
     }
-    v4l2Camera->StartStreaming();
+    v4l2Camera[cameraid]->StartStreaming();
 
     return 0;
 }
 
-static int com_iview_camera_native_stopPreview(JNIEnv *env, jobject thiz) {
+static int com_iview_camera_native_stopPreview(JNIEnv *env, jobject thiz, jint cameraid) {
     if (v4l2Camera == 0) {
         return ERROR_CAPABILITY_UNSUPPORT;
     }
 
-    v4l2Camera->StopStreaming();
+    v4l2Camera[cameraid]->StopStreaming();
 
     return 0;
 }
@@ -188,13 +199,13 @@ static int com_iview_camera_native_stopPreview(JNIEnv *env, jobject thiz) {
 static JNINativeMethod gMethods[] = {
 {"native_init",         "()V",                              (void *)com_iview_camera_native_init},
 {"native_release",         "()V",                              (void *)com_iview_camera_native_release},
-{"native_open",         "()I",                              (void *)com_iview_camera_native_open},
-{"native_close",         "()V",                              (void *)com_iview_camera_native_close},
-{"native_getParameters",         "()Ljava/util/ArrayList;",                              (void *)com_iview_camera_native_getParameters},
-{"native_setPreviewSize",         "(III)I",                              (void *)com_iview_camera_native_setPreviewSize},
-{"native_setSurface",         "(Ljava/lang/Object;)I",                              (void *)com_iview_camera_native_setSurface},
-{"native_startPreview",         "()I",                              (void *)com_iview_camera_native_startPreview},
-{"native_stopPreview",         "()I",                              (void *)com_iview_camera_native_stopPreview},
+{"native_open",         "(I)I",                              (void *)com_iview_camera_native_open},
+{"native_close",         "(I)V",                              (void *)com_iview_camera_native_close},
+{"native_getParameters",         "(I)Ljava/util/ArrayList;",                              (void *)com_iview_camera_native_getParameters},
+{"native_setPreviewSize",         "(IIII)I",                              (void *)com_iview_camera_native_setPreviewSize},
+{"native_setSurface",         "(ILjava/lang/Object;)I",                              (void *)com_iview_camera_native_setSurface},
+{"native_startPreview",         "(I)I",                              (void *)com_iview_camera_native_startPreview},
+{"native_stopPreview",         "(I)I",                              (void *)com_iview_camera_native_stopPreview},
 };
 
 //Ljava/lang/Object;

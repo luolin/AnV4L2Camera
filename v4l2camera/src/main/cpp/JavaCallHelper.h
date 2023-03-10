@@ -9,7 +9,7 @@
 
 class JavaCallHelper {
 public:
-    JavaCallHelper(JavaVM *javaVM_, JNIEnv *env_, jobject instance_);
+    JavaCallHelper(JavaVM *javaVM_, JNIEnv *env_, jobject instance_, int cameraid);
 
     ~JavaCallHelper();
 
@@ -21,6 +21,7 @@ private:
     JNIEnv *env;
     jobject instance;
     jmethodID jDataCallback;
+    jint cameraid;
 };
 
 

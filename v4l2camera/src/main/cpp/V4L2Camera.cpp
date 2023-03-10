@@ -82,6 +82,78 @@ static inline uint32_t YUV2RGB(int nY, int nU, int nV) {
 
     return 0xff000000 | (nR << 16) | (nG << 8) | nB;
 }
+typedef unsigned char UINT8;
+typedef unsigned int UINT32;
+
+static UINT8 RTable[256][256];
+static UINT8 GTable[256][256][256];
+static UINT8 BTable[256][256];
+
+static inline void NV12_T_RGB_Table()
+{
+    int y, u, v, res;
+    for (y = 0; y <= 255; y++)
+        for (v = 0; v <= 255; v++)
+        {
+            res = y + 1.402 * (v - 128);  //r
+            if (res > 255)	res = 255;
+            if (res < 0)	res = 0;
+            RTable[y][v] = res;
+        }
+
+    for(y = 0; y <= 255; y++)
+        for(u = 0; u <= 255; u++)
+            for (v = 0; v <= 255; v++)
+            {
+                res = y - 0.34414 *(u - 128) - 0.71414 * (v - 128); //g
+                if (res > 255)	res = 255;
+                if (res < 0)	res = 0;
+                GTable[y][u][v] = res;
+            }
+
+    for(y = 0; y <= 255; y++)
+        for (u = 0; u <= 255; u++)
+        {
+            res = y + 1.772 * (u - 128); //b
+            if (res > 255)	res = 255;
+            if (res < 0)	res = 0;
+            BTable[y][u] = res;
+        }
+}
+
+static inline void NV12_T_RGB(unsigned int width, unsigned int height, unsigned char *yuyv, unsigned char *rgb)
+{
+    const int nv_start = width * height;
+    UINT32  i, j, index = 0, rgb_index = 0;
+    UINT8 y, u, v;
+    int r, g, b, nv_index = 0;
+
+
+    for (i = 0; i < height; i++)
+    {
+        for (j = 0; j < width; j++) {
+            //nv_index = (rgb_index / 2 - width / 2 * ((i + 1) / 2)) * 2;
+            nv_index = (i >> 1) * width + j - j % 2;
+
+            y = yuyv[rgb_index];
+            u = yuyv[nv_start + nv_index];
+            v = yuyv[nv_start + nv_index + 1];
+
+            r = RTable[y][v];
+            g = GTable[y][u][v];
+            b = BTable[y][u];
+
+            //index = rgb_index % width + (height - i - 1) * width;
+            index = rgb_index % width + i * width;
+            rgb[index * 4 + 0] = r;   //R
+            rgb[index * 4 + 1] = g;   //G
+            rgb[index * 4 + 2] = b;   //B
+            rgb[index * 4 + 3] = 0xff;//A
+            rgb_index++;
+        }
+    }
+}
+
 
 void *render_task_start(void *args) {
     ALOGE("enter: %s", __PRETTY_FUNCTION__);
@@ -94,6 +166,7 @@ void *render_task_start(void *args) {
 V4L2Camera::V4L2Camera()
 	: start(0)
 {
+    NV12_T_RGB_Table();
 }
 
 V4L2Camera::~V4L2Camera()
@@ -114,6 +187,7 @@ int V4L2Camera::Open(const char *filename,
 {
     int ret;
     struct v4l2_format format;
+    struct v4l2_capability cap = {0};
 
     fd = open(filename, O_RDWR, 0);
     if (fd < 0) {
@@ -121,21 +195,41 @@ int V4L2Camera::Open(const char *filename,
         return -1;
     }
 
+    ret = ioctl(fd,VIDIOC_QUERYCAP, &cap);
+    if (ret < 0) {
+        ALOGE("Open Unable to VIDIOC_QUERYCAP: %s", strerror(errno));
+        return -1;
+    } else {
+        ALOGE("cap.driver = %s \n",cap.driver);
+        ALOGE("cap.card = %s \n",cap.card);
+        ALOGE("cap.bus_info = %s \n",cap.bus_info);
+        ALOGE("cap.version = %d \n",cap.version);
+        ALOGE("cap.capabilities = %x \n",cap.capabilities);
+        ALOGE("cap.device_caps = %x \n",cap.device_caps);
+        ALOGE("cap.reserved = %x \n",cap.reserved);
+    }
+
     width = w;
     height = h;
     pixelformat = p;
 
-    format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+    format.fmt.pix_mp.width = width;
+    format.fmt.pix_mp.height = height;
+    format.fmt.pix_mp.pixelformat = pixelformat;
+    // MUST set 
+    format.fmt.pix_mp.field = V4L2_FIELD_ANY;
+
     format.fmt.pix.width = width;
     format.fmt.pix.height = height;
     format.fmt.pix.pixelformat = pixelformat;
-
-    // MUST set 
+    // MUST set
     format.fmt.pix.field = V4L2_FIELD_ANY;
 
+    ALOGE("Open camera %s fmt:%dx%d set format: %d", filename, w, h, format.fmt.pix.pixelformat, strerror(errno));
     ret = ioctl(fd, VIDIOC_S_FMT, &format);
     if (ret < 0) {
-        ALOGE("Unable to set format: %s", strerror(errno));
+        ALOGE("Open Unable to set format: %s", strerror(errno));
         return -1;
     }
 
@@ -152,70 +246,82 @@ int V4L2Camera::Init()
     ALOGD("V4L2Camera::Init()");
     int ret;
     struct v4l2_requestbuffers rb;
+    int i = 0;
 
     start = false;
 
     /* V4L2: request buffers, only 1 frame */
-    rb.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    rb.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
     rb.memory = V4L2_MEMORY_MMAP;
-    rb.count = 1;
+    rb.count = BUFFER_COUNT;
 
     ret = ioctl(fd, VIDIOC_REQBUFS, &rb);
     if (ret < 0) {
-        ALOGE("Unable request buffers: %s", strerror(errno));
+        ALOGE("Init 1 request buffers: %s", strerror(errno));
         return -1;
     }
 
-    /* V4L2: map buffer  */
-    memset(&buf, 0, sizeof(struct v4l2_buffer));
+    for(i=0; i<BUFFER_COUNT; i++) {
+        /* V4L2: map buffer  */
+        memset(&buf, 0, sizeof(struct v4l2_buffer));
 
-    buf.index = 0;
-    buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-    buf.memory = V4L2_MEMORY_MMAP;
+        buf.index = i;
+        buf.flags = 0;
+        buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+        buf.memory = V4L2_MEMORY_MMAP;
 
-    ret = ioctl(fd, VIDIOC_QUERYBUF, &buf);
-    if (ret < 0) {
-        ALOGE("Unable query buffer: %s", strerror(errno));
-        return -1;
+        if (V4L2_TYPE_IS_MULTIPLANAR(buf.type)) {
+            buf.m.planes = planes;
+            buf.length = PLANES_NUM;
+        }
+        ret = ioctl(fd, VIDIOC_QUERYBUF, &buf);
+        if (ret < 0) {
+            ALOGE("Init 2 Unable query buffer: %d(%s)", errno, strerror(errno));
+            return -1;
+        }
+
+        /* Only map one */
+        mem[i] = (unsigned char *) mmap(0, buf.m.planes[0].length, PROT_READ,
+                                     MAP_SHARED, fd, buf.m.planes[0].m.mem_offset);
+        if (mem[i] == MAP_FAILED) {
+            ALOGE("Init Unable map buffer: %s", strerror(errno));
+            return -1;
+        }
+
+        /* V4L2: queue buffer */
+        ret = ioctl(fd, VIDIOC_QBUF, &buf);
     }
-
-    /* Only map one */
-    mem = (unsigned char *)mmap(0, buf.length, PROT_READ | PROT_WRITE, 
-				MAP_SHARED, fd, buf.m.offset);
-    if (mem == MAP_FAILED) {
-        ALOGE("Unable map buffer: %s", strerror(errno));
-        return -1;
-    }
-
-    /* V4L2: queue buffer */
-    ret = ioctl(fd, VIDIOC_QBUF, &buf);
-
     return 0;
 }
 
 void V4L2Camera::Uninit()
 {
-    munmap(mem, buf.length);
+    int i = 0;
+    pthread_mutex_destroy(&mutex_t);
+    for(i=0; i<BUFFER_COUNT; i++)
+        munmap(mem[i], buf.m.planes[0].length);
     return ;
 }
 
 void V4L2Camera::StartStreaming()
 {
     enum v4l2_buf_type type;
-    int ret;
+    int ret, i;
 
     if (start) return;
 
-    type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
 
     ret = ioctl(fd, VIDIOC_STREAMON, &type);
     if (ret < 0) {
-        ALOGE("Unable query buffer: %s", strerror(errno));
+        ALOGE("StartStreaming Unable query buffer: %s", strerror(errno));
         return;
     }
 
+    pthread_mutex_init(&mutex_t ,NULL);
     if (window != 0) {
-        pthread_create(&pid_start, 0, render_task_start, this);
+        for(i=0; i< BUFFER_COUNT; i++)
+            pthread_create(&pid_start[i], 0, render_task_start, this);
     }
 
     start = true;
@@ -228,45 +334,63 @@ void V4L2Camera::StopStreaming()
 
     if (!start) return;
 
-    type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
 
     ret = ioctl(fd, VIDIOC_STREAMOFF, &type);
     if (ret < 0) {
-        ALOGE("Unable query buffer: %s", strerror(errno));
+        ALOGE("StopStreaming Unable query buffer: %s", strerror(errno));
         return;
     }
 
     start = false;
 }
 
-int V4L2Camera::GrabRawFrame(void *raw_base)
+int V4L2Camera::GrabRawFrame(unsigned char *raw_base)
 {
-    int ret;
-    int data_size;
+    int ret, i;
+    int data_size = 0;
+    int j = 0;
 
-    buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
     buf.memory = V4L2_MEMORY_MMAP;
+
+    if (V4L2_TYPE_IS_MULTIPLANAR(buf.type)) {
+        buf.m.planes = planes;
+        buf.length = PLANES_NUM;
+    }
+
 
     /* V4L2: dequeue buffer */
     ret = ioctl(fd, VIDIOC_DQBUF, &buf);
     if (ret < 0) {
-        ALOGE("Unable query buffer: %s", strerror(errno));
+        ALOGE("GrabRawFrame 1 Unable query buffer: %s", strerror(errno));
         return ret;
     }
-    ALOGD("copy size :%d", buf.bytesused);
 
-    data_size = buf.bytesused;
+    ALOGD("GrabRawFrame buf index=%d planes0 length=%d bytesused=%d", buf.index,
+          planes[0].length, planes[0].bytesused);
 
+    if (V4L2_TYPE_IS_MULTIPLANAR(buf.type)) {
+        data_size += planes[0].bytesused;
+    } else {
+        data_size = buf.bytesused;
+    }
+
+    bool is_error_frame = buf.flags & V4L2_BUF_FLAG_ERROR;
+    ALOGE("GrabRawFrame buf.flags: %d   %d", buf.flags, is_error_frame);
     /* copy to userspace */
-    memcpy(raw_base, mem,  buf.bytesused);
+    if (V4L2_TYPE_IS_MULTIPLANAR(buf.type)) {
+        memcpy(raw_base, mem[buf.index], planes[0].bytesused);
+    } else
+        memcpy(raw_base, mem[buf.index], buf.bytesused);
 
     /* V4l2: queue buffer again after that */
     ret = ioctl(fd, VIDIOC_QBUF, &buf);
     if (ret < 0) {
-        ALOGE("Unable query buffer: %s", strerror(errno));
+        ALOGE("GrabRawFrame 2 Unable query buffer: %s", strerror(errno));
         return ret;
     }
-
+    ALOGD("GrabRawFrame copy size :%d", data_size);
     return data_size;
 }
 
@@ -338,6 +462,8 @@ void V4L2Camera::Convert(void *r, void *p, unsigned int rSize)
 
 
         ALOGE("MJPGToARGB: %d, %d", src_width, src_height);
+    } else if(pixelformat == V4L2_PIX_FMT_NV12) {
+        NV12_T_RGB(width, height, raw, preview);
     }
 
 
@@ -357,11 +483,17 @@ std::list<Parameter> V4L2Camera::getParameters() {
     for (int i = 0; ; i++)
     {
         fmtd.index = i;
-        fmtd.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+        fmtd.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
         if (ioctl(fd, VIDIOC_ENUM_FMT, &fmtd) < 0)
             break;
-        ALOGD("fmt %d: %s\n", i, fmtd.description);
+
         parameter.pixFormat = fmtd.pixelformat;
+        if(parameter.pixFormat != V4L2_PIX_FMT_NV12) {
+            continue;
+        }
+
+        ALOGD("fmt %d: %s\n", i, fmtd.description);
+
         parameter.frames.clear();
         // 查询这种图像数据格式下支持的分辨率
         for (int j = 0; ; j++)
@@ -370,10 +502,12 @@ std::list<Parameter> V4L2Camera::getParameters() {
             frmsize.pixel_format = fmtd.pixelformat;
             if (ioctl(fd, VIDIOC_ENUM_FRAMESIZES, &frmsize) < 0)
                 break;
-            ALOGD("w = %d, h = %d \n", frmsize.discrete.width, frmsize.discrete.height);
+            ALOGD("discrete w = %d, h = %d \n", frmsize.discrete.width, frmsize.discrete.height);
+            ALOGD("frmsize.stepwise min_width = %d, step_width = %d, max_width = %d \n", frmsize.stepwise.min_width, frmsize.stepwise.step_width, frmsize.stepwise.max_width);
+            ALOGD("frmsize.stepwise min_height = %d, step_height = %d, max_height = %d \n", frmsize.stepwise.min_height, frmsize.stepwise.step_height, frmsize.stepwise.max_height);
 
-            frame.width = frmsize.discrete.width;
-            frame.height = frmsize.discrete.height;
+            frame.width = frmsize.stepwise.max_width;
+            frame.height = frmsize.stepwise.max_height;
             frame.frameRate.clear();
 
             //查询在这种图像数据格式下这种分辨率支持的帧率
@@ -414,7 +548,14 @@ int V4L2Camera::setPreviewSize(int width, int height, int pixformat) {
     this->height = height;
     this->pixelformat = pixformat;
 
-    format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+    format.fmt.pix_mp.width = width;
+    format.fmt.pix_mp.height = height;
+    format.fmt.pix_mp.pixelformat = pixelformat;
+
+    // MUST set
+    format.fmt.pix_mp.field = V4L2_FIELD_ANY;
+
     format.fmt.pix.width = width;
     format.fmt.pix.height = height;
     format.fmt.pix.pixelformat = pixelformat;
@@ -424,7 +565,7 @@ int V4L2Camera::setPreviewSize(int width, int height, int pixformat) {
 
     ret = ioctl(fd, VIDIOC_S_FMT, &format);
     if (ret < 0) {
-        ALOGE("Unable to set format: %s", strerror(errno));
+        ALOGE("setPreviewSize Unable to set format: %s", strerror(errno));
         return -1;
     }
 
@@ -441,24 +582,31 @@ void V4L2Camera::setSurface(ANativeWindow *window) {
 }
 
 void V4L2Camera::_start() {
-    unsigned char *raw = new unsigned char[buf.length];
-    ALOGE("_start raw buf.length %d", buf.length);
+    unsigned char *raw = new unsigned char[planes[0].length];
+    ALOGE("_start raw buf.length %d", planes[0].length);
     unsigned char *preview = new unsigned char[width * height * 4]; //RGBA的大小
-
+    struct timeval tv;
+    long startime, endtime;
     int size;
     int format = -1;
     while (start) {
+        pthread_mutex_lock(&mutex_t);
         size = GrabRawFrame(raw);
         if (size < 0) {
             usleep(1000);
             continue;
         }
+        pthread_mutex_unlock(&mutex_t);
+        //sendDataToJava(raw, size);
 
-        sendDataToJava(raw, size);
-
+        gettimeofday(&tv,NULL);
+        startime = tv.tv_sec*1000 + tv.tv_usec/1000;
         Convert(raw, preview, size);
-
-        renderVideo(preview);
+        gettimeofday(&tv,NULL);
+        endtime = tv.tv_sec*1000 + tv.tv_usec/1000;
+        ALOGE("Convert time %d", endtime - startime);
+        if(endtime - startime < 100)
+            renderVideo(preview);
     }
 
     delete[] raw;
@@ -501,6 +649,9 @@ void V4L2Camera::sendDataToJava(unsigned char *raw, int size) {
     int format = -1;
 
     switch (pixelformat) {
+        case V4L2_PIX_FMT_NV12:
+            format = NV12;
+            break;
         case V4L2_PIX_FMT_YUYV:
             format = YUYV;
             break;
